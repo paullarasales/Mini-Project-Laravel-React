@@ -51,6 +51,32 @@ export default function Index({ products }) {
                         Add Product
                     </button>
                 </form>
+
+                <ul className="mt-4">
+                    {products.map((product) => (
+                        <li key={product.id} className="flex justify-between items-center border p-2 mb-2">
+                            <div>
+                                <h3 className="font-bold">{product.title}</h3>
+                                <p>{product.description}</p>
+                                <p>{product.price}</p>
+                            </div>
+                            <div>
+                                <a
+                                    href={`/products/${product.id}/edit`}
+                                    className="text-blue-500 mr-2"
+                                >
+                                    Edit
+                                </a>
+                                <button
+                                    onClick={() => handleDelete(product.id)}
+                                    className="text-red-500"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </div>
         </AuthenticatedLayout>
     );
