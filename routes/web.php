@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TaskController;
@@ -25,8 +26,16 @@ Route::get('/test', [TestController::class, 'test'])
     ->middleware(['auth', 'verified'])
     ->name('test');
 
-Route::resource('tasks', TaskController::class)->middleware(['auth', 'verified']);
-Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
+Route::resource('tasks', TaskController::class)
+    ->middleware(['auth', 'verified']);
+
+Route::resource('products', ProductController::class)
+    ->middleware(['auth', 'verified']);
+
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])
+    ->name('redirect.google');
+
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
