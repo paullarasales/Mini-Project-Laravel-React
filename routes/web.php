@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Foundation\Application;
@@ -25,6 +26,7 @@ Route::get('/test', [TestController::class, 'test'])
     ->name('test');
 
 Route::resource('tasks', TaskController::class)->middleware(['auth', 'verified']);
+Route::resource('products', ProductController::class)->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
