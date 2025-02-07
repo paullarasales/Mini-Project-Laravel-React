@@ -21,6 +21,8 @@ export default function Login({ status, canResetPassword }) {
         });
     };
 
+    const googleLoginUrl = route('redirect.google');
+
     return (
         <GuestLayout>
             <Head title="Log in" />
@@ -93,6 +95,14 @@ export default function Login({ status, canResetPassword }) {
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
                     </PrimaryButton>
+                    <div className="mt-6">
+                        <a
+                            href={googleLoginUrl}
+                            className="inline-flex w-full items-center justify-center rounded-md bg-red-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-600"
+                        >
+                            Login with Google
+                        </a>
+                    </div>
                 </div>
             </form>
         </GuestLayout>

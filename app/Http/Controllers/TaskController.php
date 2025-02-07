@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::where('user_id', auth()->id())->get();
         return Inertia::render('Tasks/Index',[
             'tasks' => $tasks
         ]);
@@ -20,10 +20,15 @@ class TaskController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'description' => 'nullable'
+            'description' => 'nullable',
         ]);
 
-        Task::create($request->all());
+        Task::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'user_id' => auth()->id(),
+        ]);
+
         return redirect()->route('tasks.index');
     }
 
@@ -38,7 +43,7 @@ class TaskController extends Controller
     {
         $request->validate([
             'title' => 'required|max:255',
-            'description' => 'nullable'
+            'description' => 'nullable',
         ]);
 
         $task->update($request->all());
