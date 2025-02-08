@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Foundation\Application;
@@ -25,6 +26,14 @@ Route::get('/dashboard', function () {
 Route::get('/test', [TestController::class, 'test'])
     ->middleware(['auth', 'verified'])
     ->name('test');
+
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])
+    ->middleware(['auth', 'verified', 'admin'])
+    ->name('admin.dashboard');
+
+Route::get('/admin/test', [AdminController::class, 'test'])
+    ->middleware(['auth', 'verified'])
+    ->name('admin.test');
 
 Route::resource('tasks', TaskController::class)
     ->middleware(['auth', 'verified']);
