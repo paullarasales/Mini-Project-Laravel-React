@@ -54,6 +54,19 @@ export default function AdminLayout({ header, children }) {
                                 className="flex items-center space-x-2 bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200"
                             >
                                 <span className="text-gray-700 font-medium">{auth.user.name}</span>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className={`h-5 w-5 transition-transform ${dropdownOpen ? 'rotate-180' : 'rotate-0'
+                                        }`}
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                                >
+                                    <path
+                                        fillRule="evenodd"
+                                        d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.72-3.71a.75.75 0 011.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0l-4.25-4.25a.75.75 0 01.02-1.06z"
+                                        clipRule="evenodd"
+                                    />
+                                </svg>
                             </button>
                         </div>
                     </div>
