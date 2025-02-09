@@ -41,6 +41,10 @@ class GoogleController extends Controller
             
             Auth::login($user);
 
+            if ($user->usertype === "admin") {
+                return redirect()->route('admin.dashboard');
+            }
+
             return redirect()->intented('/dashboard');
         } catch (\Exception $e) {
             return redirect('/login')->withErrors(['error' => 'Failed to authenticate']);
