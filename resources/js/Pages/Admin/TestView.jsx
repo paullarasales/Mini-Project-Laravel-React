@@ -1,12 +1,12 @@
 import React from 'react';
-import AdminAuthenticatedLayout from '@/Layouts/AdminAuthenticatedLayout';
+import AdminLayout from '@/Layouts/AdminLayout';
 
 export default function TestView() {
     return (
-        <AdminAuthenticatedLayout>
+        <AdminLayout>
             <div>
                 <h1>Hello Admin</h1>
             </div>
-        </AdminAuthenticatedLayout>
+        </AdminLayout>
     )
 }

@@ -15,6 +15,6 @@ class AdminController extends Controller
 
     public function test()
     {
-        return Inertia::render('Admin/Test');
+        return Inertia::render('Admin/TestView');
     }
 }
