@@ -16,4 +16,4 @@ class Admin
 
         return $next($request);
     }
-}
+} 
